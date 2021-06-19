@@ -31,28 +31,92 @@ function oldScrabbleScorer(word) {
 
 // your job is to finish writing these functions and variables that we've named //
 // don't change the names or your program won't work as expected. //
-
 function initialPrompt() {
-   console.log("Let's play some scrabble! Enter a word:");
+  console.log("Let's play some scrabble! ");
+ question = input.question("Enter a word to score: ");
+  return oldScrabbleScorer(question);
 };
+console.log(initialPrompt());
 
-let simpleScore;
+function simpleScore(word) {
+  let a = 0;
+  for (i = 0; i < word.length; i++) {
+    a++;
+  }
+  return a;
+}
 
-let vowelBonusScore;
+function vowelBonusScore(word) {
+  let vowels = 'aeuio';
+  let vowelBonusScore = 0;
+  
+  for(let i = 0; i < word.length ; i++) {
+    if (vowels.includes(word[i].toLowerCase())) {
+      vowelBonusScore += 3;
+    }
+    if (!vowels.includes(word[i].toLowerCase())){
+      vowelBonusScore +=1
+    }
+  }
+  return vowelBonusScore;
+}
 
-let scrabbleScore;
+let scrabbleScore = oldScrabbleScorer;
 
-const scoringAlgorithms = [];
+const scoringAlgorithms = [
+{
+	name: "Simple Score",
+	description:"Each letter is worth 1 point.",
+	scoreFunction: simpleScore
+ },
+ {
+	 name:"Bonus Vowels",
+	 description:"Vowels are 3 pts, consonants are 1 pt.",
+	 scoreFunction:vowelBonusScore
+ },
+{
+	 name: "Scrabble" ,
+	 description: "The traditional scoring algorithm.",
+	 scoreFunction: scrabbleScore
+ },
+];
 
-function scorerPrompt() {}
+function scorerPrompt(parameter) {
+  let userAnswer = [];
+  let options = ("\n\n0 - Simple: One point per character\n1 - Vowel Bonus: Vowels are worth 3 points\n2 - Scrabble: Uses scrabble point system\n");
+  let selectedOptions = input.question(`Which scoring algorithm would you like to use?${options}Enter 0, 1, or 2: `); 
+  selectedOptions = Number(selectedOptions);
+  if (selectedOptions === 0) {
+    console.log("algorithm name: ", scoringAlgorithms[0].name);
+    console.log("scorerFunction result: ", scoringAlgorithms[0].scoreFunction(question));
+  } if (selectedOptions === 1) {
+    console.log("algorithm name: ", scoringAlgorithms[1].name);
+    console.log("scorerFunction result: ", scoringAlgorithms[1].scoreFunction(question));
+  } if (selectedOptions === 2) {
+    console.log("algorithm name: ", scoringAlgorithms[2].name);
+    console.log("scorerFunction result: ", scoringAlgorithms[2].scoreFunction(question));
+  }
+  return selectedOptions;
+}
 
-function transform() {};
+function transform(oldPointStructure) {
+  let newPointStructure = {};
+  
+  Object.keys(oldPointStructure).forEach(point => {
+    oldPointStructure[point].forEach(character=> {
+      newPointStructure[character.toLowerCase()] = point;
+    });
+  });
+  return newPointStructure;
+}
 
-let newPointStructure;
+let newPointStructure = transform(oldPointStructure);
+
+
 
 function runProgram() {
-   initialPrompt();
-   
+  //  initialPrompt();
+   scorerPrompt();
 }
 
 // Don't write any code below this line //
