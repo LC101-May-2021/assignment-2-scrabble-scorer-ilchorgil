@@ -31,11 +31,11 @@ function oldScrabbleScorer(word) {
 
 // don't change the names or your program won't work as expected. //
 function initialPrompt() {
-  console.log("Let's play some scrabble! ");
+ console.log("Let's play some scrabble! ");
  question = input.question("\nEnter a word to score: ");
   return oldScrabbleScorer(question);
 };
-// console.log(initialPrompt());
+
 
 function simpleScore(word) {
   let a = 0;
@@ -77,6 +77,7 @@ function transform(oldPointStructure){
  
 function scrabbleScore (wordToScore){
   let letterPoints = 0;
+  question = question
 	for (let i = 0; i < question.length; i++) {
     if (question[i] in newPointStructure){
     letterPoints+= newPointStructure[question[i]]
@@ -98,7 +99,7 @@ const scoringAlgorithms = [
 	 scoreFunction:vowelBonusScore
  },
 {
-	 name: "Scrabble" ,
+	 name: "Scrabble",
 	 description: "The traditional scoring algorithm.",
 	 scoreFunction: scrabbleScore
  },
@@ -110,7 +111,6 @@ function scorerPrompt(parameter) {
   let selectedOptions = input.question(`Which scoring algorithm would you like to use?${options}Enter 0, 1, or 2: `); 
   selectedOptions = Number(selectedOptions);
   if (selectedOptions === 0) {
-    // console.log("algorithm name: ", scoringAlgorithms[0].name);
     console.log(`Score for '${question}': ${scoringAlgorithms[0].scoreFunction(question)}`);
   } else if (selectedOptions === 1) {
     // console.log("algorithm name: ", scoringAlgorithms[1].name);
