@@ -75,7 +75,7 @@ function transform(oldPointStructure){
 	}
 
  let newPointStructure = transform(oldPointStructure);
- 
+//  console.log(newPointStructure);
 function scrabbleScore (wordToScore){
   let letterPoints = 0;
   question = question.toUpperCase();
