@@ -92,17 +92,17 @@ const scoringAlgorithms = [
 {
 	name: "Simple Score",
 	description: "Each letter is worth 1 point.",
-	scoreFunction: simpleScore
+	scoringFunction: simpleScore
  },
  {
 	 name: "Bonus Vowels",
 	 description: "Vowels are 3 pts, consonants are 1 pt.",
-	 scoreFunction: vowelBonusScore
+	 scoringFunction: vowelBonusScore
  },
 {
 	 name: "Scrabble",
 	 description: "The traditional scoring algorithm.",
-	 scoreFunction: scrabbleScore
+	 scoringFunction: scrabbleScore
  },
 ];
 
@@ -112,13 +112,13 @@ function scorerPrompt(parameter) {
   let selectedOptions = input.question(`Which scoring algorithm would you like to use?${options}Enter 0, 1, or 2: `); 
   selectedOptions = Number(selectedOptions);
   if (selectedOptions === 0) {
-    console.log(`Score for '${question}': ${scoringAlgorithms[0].scoreFunction(question)}`);
+    console.log(`Score for '${question}': ${scoringAlgorithms[0].scoringFunction(question)}`);
   } else if (selectedOptions === 1) {
     // console.log("algorithm name: ", scoringAlgorithms[1].name);
-    console.log(`Score for '${question}': ${scoringAlgorithms[1].scoreFunction(question)}`);
+    console.log(`Score for '${question}': ${scoringAlgorithms[1].scoringFunction(question)}`);
   } else if (selectedOptions === 2) {
     // console.log("algorithm name: ", scoringAlgorithms[2].name);
-    console.log(`Score for '${question}': ${scoringAlgorithms[2].scoreFunction(question)}`);
+    console.log(`Score for '${question}': ${scoringAlgorithms[2].scoringFunction(question)}`);
   }
   return selectedOptions;
 }
