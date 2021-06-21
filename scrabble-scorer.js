@@ -21,7 +21,7 @@ function oldScrabbleScorer(word) {
 	  for (const pointValue in oldPointStructure) {
  
 		 if (oldPointStructure[pointValue].includes(word[i])) {
-			letterPoints += `Points for '${word[i]}': ${pointValue}`
+			letterPoints += `Points for '${word[i]}': ${pointValue}\n`
 		 }
  
 	  }
@@ -35,7 +35,7 @@ function initialPrompt() {
  question = input.question("Enter a word to score: ");
   return oldScrabbleScorer(question);
 };
-console.log(initialPrompt());
+// console.log(initialPrompt());
 
 function simpleScore(word) {
   let a = 0;
@@ -59,6 +59,7 @@ function vowelBonusScore(word) {
   }
   return vowelBonusScore;
 }
+
 function transform(oldPointStructure){
 	let scoresByLetter = {};
   for(key in oldPointStructure){
@@ -71,6 +72,7 @@ function transform(oldPointStructure){
     }
 		return scoresByLetter;  
 	}
+
  let newPointStructure = transform(oldPointStructure);
  
 function scrabbleScore (wordToScore){
@@ -114,14 +116,14 @@ function scorerPrompt(parameter) {
     console.log("algorithm name: ", scoringAlgorithms[1].name);
     console.log("scorerFunction result: ", scoringAlgorithms[1].scoreFunction(question));
   } else if (selectedOptions === 2) {
-    console.log("algorithm name: ", scoringAlgorithms[2].name);
-    console.log("scorerFunction result: ", scoringAlgorithms[2].scoreFunction(question));
+    // console.log("algorithm name: ", scoringAlgorithms[2].name);
+    console.log(`Score for '${question}': ${scoringAlgorithms[2].scoreFunction(question)}`);
   }
   return selectedOptions;
 }
 
 function runProgram() {
-  // initialPrompt();
+  initialPrompt();
   scorerPrompt();
 }
 // Don't write any code below this line //
