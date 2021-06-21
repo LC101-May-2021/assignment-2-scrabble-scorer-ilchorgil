@@ -21,7 +21,7 @@ function oldScrabbleScorer(word) {
 	  for (const pointValue in oldPointStructure) {
  
 		 if (oldPointStructure[pointValue].includes(word[i])) {
-			letterPoints += `Points for '${word[i]}': ${pointValue}\n`
+			letterPoints += `Points for '${word[i]}': ${pointValue}`
 		 }
  
 	  }
@@ -29,7 +29,6 @@ function oldScrabbleScorer(word) {
 	return letterPoints;
  }
 
-// your job is to finish writing these functions and variables that we've named //
 // don't change the names or your program won't work as expected. //
 function initialPrompt() {
   console.log("Let's play some scrabble! ");
@@ -60,8 +59,30 @@ function vowelBonusScore(word) {
   }
   return vowelBonusScore;
 }
+function transform(oldPointStructure){
+	let scoresByLetter = {};
+  for(key in oldPointStructure){
+      for(let value in oldPointStructure){
+       let letters = oldPointStructure[key];
+			 for (let i=0; i<letters.length; i++){
+         scoresByLetter[letters[i].toLowerCase()] = Number(key)
+       }
+      }
+    }
+		return scoresByLetter;  
+	}
+ let newPointStructure = transform(oldPointStructure);
+ 
+function scrabbleScore (wordToScore){
+  let letterPoints = 0;
+	for (let i = 0; i < question.length; i++) {
+    if (question[i] in newPointStructure){
+    letterPoints+= newPointStructure[question[i]]
+    }
+	}
+  return letterPoints;
+ }
 
-let scrabbleScore = oldScrabbleScorer;
 
 const scoringAlgorithms = [
 {
@@ -89,35 +110,20 @@ function scorerPrompt(parameter) {
   if (selectedOptions === 0) {
     console.log("algorithm name: ", scoringAlgorithms[0].name);
     console.log("scorerFunction result: ", scoringAlgorithms[0].scoreFunction(question));
-  } if (selectedOptions === 1) {
+  } else if (selectedOptions === 1) {
     console.log("algorithm name: ", scoringAlgorithms[1].name);
     console.log("scorerFunction result: ", scoringAlgorithms[1].scoreFunction(question));
-  } if (selectedOptions === 2) {
+  } else if (selectedOptions === 2) {
     console.log("algorithm name: ", scoringAlgorithms[2].name);
     console.log("scorerFunction result: ", scoringAlgorithms[2].scoreFunction(question));
   }
   return selectedOptions;
 }
 
-function transform(oldPointStructure) {
-  let newPointStructure = {};
-  
-  Object.keys(oldPointStructure).forEach(point => {
-    oldPointStructure[point].forEach(character=> {
-      newPointStructure[character.toLowerCase()] = point;
-    });
-  });
-  return newPointStructure;
-}
-
-let newPointStructure = transform(oldPointStructure);
-
-// console.log(newPointStructure);
 function runProgram() {
-  //  initialPrompt();
-   scorerPrompt();
+  // initialPrompt();
+  scorerPrompt();
 }
-
 // Don't write any code below this line //
 // And don't change these or your program will not run as expected //
 module.exports = {
