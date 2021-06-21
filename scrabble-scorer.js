@@ -77,7 +77,7 @@ function transform(oldPointStructure){
  
 function scrabbleScore (wordToScore){
   let letterPoints = 0;
-  question = question
+  question = question;
 	for (let i = 0; i < question.length; i++) {
     if (question[i] in newPointStructure){
     letterPoints+= newPointStructure[question[i]]
@@ -106,6 +106,7 @@ const scoringAlgorithms = [
 ];
 
 function scorerPrompt(parameter) {
+  question = question;
   let userAnswer = [];
   let options = ("\n\n0 - Simple: One point per character\n1 - Vowel Bonus: Vowels are worth 3 points\n2 - Scrabble: Uses scrabble point system\n");
   let selectedOptions = input.question(`Which scoring algorithm would you like to use?${options}Enter 0, 1, or 2: `); 
