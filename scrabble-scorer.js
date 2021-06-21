@@ -32,7 +32,7 @@ function oldScrabbleScorer(word) {
 // don't change the names or your program won't work as expected. //
 function initialPrompt() {
   console.log("Let's play some scrabble! ");
- question = input.question("Enter a word to score: ");
+ question = input.question("\nEnter a word to score: ");
   return oldScrabbleScorer(question);
 };
 // console.log(initialPrompt());
@@ -110,11 +110,11 @@ function scorerPrompt(parameter) {
   let selectedOptions = input.question(`Which scoring algorithm would you like to use?${options}Enter 0, 1, or 2: `); 
   selectedOptions = Number(selectedOptions);
   if (selectedOptions === 0) {
-    console.log("algorithm name: ", scoringAlgorithms[0].name);
-    console.log("scorerFunction result: ", scoringAlgorithms[0].scoreFunction(question));
+    // console.log("algorithm name: ", scoringAlgorithms[0].name);
+    console.log(`Score for '${question}': ${scoringAlgorithms[0].scoreFunction(question)}`);
   } else if (selectedOptions === 1) {
-    console.log("algorithm name: ", scoringAlgorithms[1].name);
-    console.log("scorerFunction result: ", scoringAlgorithms[1].scoreFunction(question));
+    // console.log("algorithm name: ", scoringAlgorithms[1].name);
+    console.log(`Score for '${question}': ${scoringAlgorithms[1].scoreFunction(question)}`);
   } else if (selectedOptions === 2) {
     // console.log("algorithm name: ", scoringAlgorithms[2].name);
     console.log(`Score for '${question}': ${scoringAlgorithms[2].scoreFunction(question)}`);
