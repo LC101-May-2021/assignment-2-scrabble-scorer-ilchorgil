@@ -12,7 +12,7 @@ const oldPointStructure = {
   10: ['Q', 'Z']
 };
 
-let question = 0;
+// let question = input.question();
 function oldScrabbleScorer(word) {
 	word = word.toUpperCase();
 	let letterPoints = "";
@@ -91,13 +91,13 @@ function scrabbleScore (wordToScore){
 const scoringAlgorithms = [
 {
 	name: "Simple Score",
-	description:"Each letter is worth 1 point.",
+	description: "Each letter is worth 1 point.",
 	scoreFunction: simpleScore
  },
  {
-	 name:"Bonus Vowels",
-	 description:"Vowels are 3 pts, consonants are 1 pt.",
-	 scoreFunction:vowelBonusScore
+	 name: "Bonus Vowels",
+	 description: "Vowels are 3 pts, consonants are 1 pt.",
+	 scoreFunction: vowelBonusScore
  },
 {
 	 name: "Scrabble",
