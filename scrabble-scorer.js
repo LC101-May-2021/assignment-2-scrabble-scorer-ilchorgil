@@ -40,7 +40,7 @@ function initialPrompt() {
 function simpleScore(word) {
   let simpleScore = 0;
   for (i = 0; i < word.length; i++) {
-    a++;
+    simpleScore++;
   }
   return simpleScore;
 }
