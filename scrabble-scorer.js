@@ -76,14 +76,14 @@ function transform(oldPointStructure){
  let newPointStructure = transform(oldPointStructure);
 
 function scrabbleScore (wordToScore){
-  let letterPoints = 0;
+  let integerScore = 0;
   let userAnswer = question.toLowerCase();
 	for (let i = 0; i < userAnswer.length; i++) {
     if (userAnswer[i] in newPointStructure){
-    letterPoints+= newPointStructure[userAnswer[i]]
+    integerScore+= newPointStructure[userAnswer[i]]
     }
 	}
-  return letterPoints;
+  return integerScore;
  }
 
 
