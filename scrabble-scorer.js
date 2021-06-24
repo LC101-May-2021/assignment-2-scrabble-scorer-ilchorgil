@@ -38,11 +38,11 @@ function initialPrompt() {
 
 
 function simpleScore(word) {
-  let a = 0;
+  let simpleScore = 0;
   for (i = 0; i < word.length; i++) {
     a++;
   }
-  return a;
+  return simpleScore;
 }
 
 function vowelBonusScore(word) {
@@ -76,14 +76,14 @@ function transform(oldPointStructure){
  let newPointStructure = transform(oldPointStructure);
 
 function scrabbleScore (wordToScore){
-  let integerScore = 0;
+  let scrabbleScore = 0;
   let userAnswer = question.toLowerCase();
 	for (let i = 0; i < userAnswer.length; i++) {
     if (userAnswer[i] in newPointStructure){
-    integerScore+= newPointStructure[userAnswer[i]]
+    scrabbleScore+= newPointStructure[userAnswer[i]]
     }
 	}
-  return integerScore;
+  return scrabbleScore;
  }
 
 
