@@ -77,10 +77,10 @@ function transform(oldPointStructure){
 
 function scrabbleScore (wordToScore){
   let letterPoints = 0;
-  question = question.toLowerCase();
-	for (let i = 0; i < question.length; i++) {
-    if (question[i] in newPointStructure){
-    letterPoints+= newPointStructure[question[i]]
+  let userAnswer = question.toLowerCase();
+	for (let i = 0; i < userAnswer.length; i++) {
+    if (userAnswer[i] in newPointStructure){
+    letterPoints+= newPointStructure[userAnswer[i]]
     }
 	}
   return letterPoints;
