@@ -76,6 +76,8 @@ function transform(oldPointStructure){
  let newPointStructure = transform(oldPointStructure);
 
 function scrabbleScore (wordToScore){
+  question = question;
+  newPointStructure = transform(oldPointStructure);
   let scrabbleScore = 0;
   let userAnswer = question.toLowerCase();
 	for (let i = 0; i < userAnswer.length; i++) {
