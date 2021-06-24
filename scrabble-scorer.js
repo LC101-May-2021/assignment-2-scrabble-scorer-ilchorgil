@@ -12,7 +12,6 @@ const oldPointStructure = {
   10: ['Q', 'Z']
 };
 
-// let question = input.question();
 function oldScrabbleScorer(word) {
 	word = word.toUpperCase();
 	let letterPoints = "";
@@ -62,23 +61,23 @@ function vowelBonusScore(word) {
 }
 
 function transform(oldPointStructure){
-	let scoresByLetter = {};
-  for(key in oldPointStructure){
+	let newPointStructure = {};
+  for(keys in oldPointStructure){
       for(let value in oldPointStructure){
-       let letters = oldPointStructure[key];
-			 for (let i=0; i<letters.length; i++){
-         scoresByLetter[letters[i].toUpperCase()] = Number(key)
+       let letters = oldPointStructure[keys];
+			 for (let index = 0; index < letters.length; index++){
+         newPointStructure[letters[index].toLowerCase()] = Number(keys)
        }
       }
     }
-		return scoresByLetter;  
+		return newPointStructure;  
 	}
 
  let newPointStructure = transform(oldPointStructure);
-//  console.log(newPointStructure);
+
 function scrabbleScore (wordToScore){
   let letterPoints = 0;
-  question = question.toUpperCase();
+  question = question.toLowerCase();
 	for (let i = 0; i < question.length; i++) {
     if (question[i] in newPointStructure){
     letterPoints+= newPointStructure[question[i]]
@@ -107,7 +106,7 @@ const scoringAlgorithms = [
 ];
 
 function scorerPrompt(parameter) {
-  let userAnswer = [];
+  // let userAnswer = scoringAlgorithms[0].name
   let options = ("\n\n0 - Simple: One point per character\n1 - Vowel Bonus: Vowels are worth 3 points\n2 - Scrabble: Uses scrabble point system\n");
   let selectedOptions = input.question(`Which scoring algorithm would you like to use?${options}Enter 0, 1, or 2: `); 
   selectedOptions = Number(selectedOptions);
@@ -119,15 +118,18 @@ function scorerPrompt(parameter) {
   } else if (selectedOptions === 2) {
     // console.log("algorithm name: ", scoringAlgorithms[2].name);
     console.log(`Score for '${question}': ${scoringAlgorithms[2].scoringFunction(question)}`);
+  } else if (selectedOptions === isNaN || selectedOptions >=3){
+    console.log("Invalid Input")
   }
   return selectedOptions;
 }
 
-function runProgram() {
+function runProgram(algorithms) {
   initialPrompt();
   scorerPrompt();
-  scrabbleScore();
+  // scrabbleScore();
 }
+// runProgram(scoringAlgorithms)
 // Don't write any code below this line //
 // And don't change these or your program will not run as expected //
 module.exports = {
