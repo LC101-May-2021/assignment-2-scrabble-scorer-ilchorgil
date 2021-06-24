@@ -75,7 +75,7 @@ function transform(oldPointStructure){
 
  let newPointStructure = transform(oldPointStructure);
 
-function scrabbleScore (wordToScore){
+function scrabbleScore (question){
   question = question;
   newPointStructure = transform(oldPointStructure);
   let scrabbleScore = 0;
